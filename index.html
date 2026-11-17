@@ -10,28 +10,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f6f0ea; --bg2:#efe6dd; --ink:#1f1416; --muted:#7a6a66; --line:#e2d5ca;
-  --wine:#5e1622; --wine2:#7d2433; --card:#fbf7f3; --on-wine:#f6ece8;
-  --ease:cubic-bezier(.2,.7,.1,1);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){ --bg:#140e0f; --bg2:#1b1314; --ink:#f3e9e4; --muted:#ab9993; --line:#2e2224; --card:#1d1517; --wine:#8c2a3a; --wine2:#a33446; }
-}
+:root{--bg:#f6f0ea;--bg2:#efe6dd;--ink:#1f1416;--muted:#7a6a66;--line:#e2d5ca;--accent:#5e1622;--accent2:#7d2433;--card:#fbf7f3;--on-accent:#f6ece8;--accent-soft:#f0c4c9;--shadow:60,10,20;--ease:cubic-bezier(.2,.7,.1,1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#140e0f;--bg2:#1b1314;--ink:#f3e9e4;--muted:#ab9993;--line:#2e2224;--card:#1d1517;--accent:#8c2a3a;--accent2:#c4566a}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.serif{font-family:"Cormorant Garamond",serif;font-weight:600;letter-spacing:-.015em;line-height:1}
-.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine2);font-weight:700}
-h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(38px,5.4vw,68px);line-height:1;letter-spacing:-.015em;margin:12px 0 36px}
-h2 em{font-style:italic;color:var(--wine2)}
+.serif{font-family:"Cormorant Garamond",serif,serif;font-weight:600;letter-spacing:-.015em;line-height:1}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);font-weight:700}
+h2{font-family:"Cormorant Garamond",serif,serif;font-weight:600;font-size:clamp(38px,5.4vw,68px);line-height:1;letter-spacing:-.015em;margin:12px 0 36px}
+h2 em{font-style:italic;color:var(--accent2)}
 
 /* buttons */
 .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:17px 30px;border-radius:999px;font-weight:700;font-size:15px;
-     text-decoration:none;background:var(--wine);color:var(--on-wine);overflow:hidden;isolation:isolate;transition:transform .4s var(--ease)}
+     text-decoration:none;background:var(--accent);color:var(--on-accent);overflow:hidden;isolation:isolate;transition:transform .4s var(--ease)}
 .btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1;border-radius:inherit}
 .btn:hover::before{transform:none}
 .btn:hover{color:var(--bg)}
@@ -46,8 +40,8 @@ header{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s, box-s
 header.solid{background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
 header.hide{transform:translateY(-100%)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-.logo{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;text-decoration:none;letter-spacing:-.01em}
-.logo span{color:var(--wine2);font-style:italic}
+.logo{font-family:"Cormorant Garamond",serif,serif;font-size:28px;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--accent2);font-style:italic}
 nav{display:flex;gap:30px}
 nav a{text-decoration:none;font-size:14px;color:var(--muted);position:relative;transition:color .3s}
 nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
@@ -62,7 +56,7 @@ header .btn{padding:11px 22px;font-size:14px}
 .line > span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
 .loaded .line > span{transform:none}
 .line:nth-child(2) > span{transition-delay:.08s}.line:nth-child(3) > span{transition-delay:.16s}.line:nth-child(4) > span{transition-delay:.24s}
-.hero h1 em{font-style:italic;color:var(--wine2)}
+.hero h1 em{font-style:italic;color:var(--accent2)}
 .fade{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .loaded .fade{opacity:1;transform:none}
 .loaded .d1{transition-delay:.45s}.loaded .d2{transition-delay:.6s}.loaded .d3{transition-delay:.75s}
@@ -73,7 +67,7 @@ header .btn{padding:11px 22px;font-size:14px}
 .proof b{color:var(--ink);font-size:15px}
 
 .visual{position:relative;height:min(78vh,700px)}
-.ph{position:absolute;overflow:hidden;border-radius:999px 999px 28px 28px;box-shadow:0 30px 80px -30px rgba(60,10,20,.45)}
+.ph{position:absolute;overflow:hidden;border-radius:999px 999px 28px 28px;box-shadow:0 30px 80px -30px rgba(var(--shadow),.45)}
 .ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);transition:transform 1.6s var(--ease)}
 .loaded .ph img{transform:scale(1)}
 .ph.a{right:0;top:0;width:72%;height:86%;clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease) .2s}
@@ -81,7 +75,7 @@ header .btn{padding:11px 22px;font-size:14px}
 .loaded .ph.a,.loaded .ph.b{clip-path:inset(0 0 0 0)}
 .badge{position:absolute;left:30%;top:8%;width:118px;height:118px;border-radius:50%;background:var(--card);display:grid;place-items:center;box-shadow:0 16px 40px -18px rgba(0,0,0,.35);z-index:3}
 .badge svg{position:absolute;inset:0;animation:spin 18s linear infinite}
-.badge b{font-family:"Cormorant Garamond",serif;font-size:30px;line-height:1;color:var(--wine2)}
+.badge b{font-family:"Cormorant Garamond",serif,serif;font-size:30px;line-height:1;color:var(--accent2)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (max-width:900px){
   .hero{grid-template-columns:minmax(0,1fr);min-height:auto;padding-top:100px;gap:40px}
@@ -91,8 +85,8 @@ header .btn{padding:11px 22px;font-size:14px}
 /* marquee */
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
 .track{display:flex;gap:48px;width:max-content;animation:marq 32s linear infinite}
-.track span{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,3vw,38px);white-space:nowrap;display:flex;align-items:center;gap:48px}
-.track span::after{content:"✦";font-size:.5em;color:var(--wine2)}
+.track span{font-family:"Cormorant Garamond",serif,serif;font-size:clamp(26px,3vw,38px);white-space:nowrap;display:flex;align-items:center;gap:48px}
+.track span::after{content:"✦";font-size:.5em;color:var(--accent2)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 section{padding:120px 0}
@@ -102,7 +96,7 @@ section{padding:120px 0}
 /* numbers */
 .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);padding-top:40px}
 .nums div{transition-delay:calc(var(--i)*.1s)}
-.nums b{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(46px,6vw,80px);line-height:1;font-weight:600}
+.nums b{display:block;font-family:"Cormorant Garamond",serif,serif;font-size:clamp(46px,6vw,80px);line-height:1;font-weight:600}
 .nums span{color:var(--muted);font-size:14px}
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:end;margin-bottom:60px}
 .about p{color:var(--muted);font-size:18px;max-width:32em}
@@ -111,13 +105,13 @@ section{padding:120px 0}
 /* prices */
 .tabs{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--bg2);margin-bottom:34px;position:relative}
 .tabs button{position:relative;z-index:1;border:0;background:none;font:600 14px Manrope,sans-serif;color:var(--muted);padding:11px 22px;border-radius:999px;cursor:pointer;transition:color .4s}
-.tabs button.on{color:var(--on-wine)}
-.tabs .pill{position:absolute;top:5px;bottom:5px;border-radius:999px;background:var(--wine);transition:left .5s var(--ease),width .5s var(--ease)}
+.tabs button.on{color:var(--on-accent)}
+.tabs .pill{position:absolute;top:5px;bottom:5px;border-radius:999px;background:var(--accent);transition:left .5s var(--ease),width .5s var(--ease)}
 .plist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:60px}
 .prow{display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);animation:rowin .7s var(--ease) forwards;animation-delay:calc(var(--i)*.06s)}
 .prow .n{flex:1;font-size:17px}
 .prow small{display:block;color:var(--muted);font-size:13px}
-.prow .p{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;white-space:nowrap}
+.prow .p{font-family:"Cormorant Garamond",serif,serif;font-size:28px;font-weight:600;white-space:nowrap}
 @keyframes rowin{to{opacity:1;transform:none}}
 .note{color:var(--muted);font-size:13px;margin-top:22px}
 @media (max-width:760px){ .plist{grid-template-columns:minmax(0,1fr)} .tabs{display:flex;overflow-x:auto} }
@@ -141,9 +135,9 @@ section{padding:120px 0}
 /* why */
 .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .why div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 26px;transition:transform .5s var(--ease),box-shadow .5s, opacity 1s var(--ease);transition-delay:0s,0s,calc(var(--i)*.1s)}
-.why div:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(60,10,20,.4)}
-.why i{font-style:normal;font-family:"Cormorant Garamond",serif;color:var(--wine2);font-size:20px}
-.why b{display:block;font-family:"Cormorant Garamond",serif;font-size:28px;margin:18px 0 8px;font-weight:600}
+.why div:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(var(--shadow),.4)}
+.why i{font-style:normal;font-family:"Cormorant Garamond",serif,serif;color:var(--accent2);font-size:20px}
+.why b{display:block;font-family:"Cormorant Garamond",serif,serif;font-size:28px;margin:18px 0 8px;font-weight:600}
 .why p{color:var(--muted);font-size:15px}
 @media (max-width:900px){ .why{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:520px){ .why{grid-template-columns:minmax(0,1fr)} }
@@ -152,33 +146,33 @@ section{padding:120px 0}
 .rev{position:relative;overflow:hidden}
 .slides{display:flex;transition:transform .9s var(--ease)}
 .slide{min-width:100%;padding-right:20px}
-.slide q{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(28px,3.6vw,46px);line-height:1.15;quotes:"«" "»";max-width:22em}
+.slide q{display:block;font-family:"Cormorant Garamond",serif,serif;font-size:clamp(28px,3.6vw,46px);line-height:1.15;quotes:"«" "»";max-width:22em}
 .slide span{display:block;margin-top:26px;color:var(--muted);font-size:14px}
 .dots{display:flex;gap:8px;margin-top:34px}
 .dots button{width:30px;height:3px;border:0;background:var(--line);cursor:pointer;border-radius:3px;position:relative;overflow:hidden}
-.dots button.on::after{content:"";position:absolute;inset:0;background:var(--wine2);animation:fill 6s linear forwards}
+.dots button.on::after{content:"";position:absolute;inset:0;background:var(--accent2);animation:fill 6s linear forwards}
 @keyframes fill{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
 .gnote{margin-top:16px;font-size:13px;color:var(--muted)}
 
 /* contact */
-.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:32px;overflow:hidden;background:var(--wine);color:var(--on-wine)}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-radius:32px;overflow:hidden;background:var(--accent);color:var(--on-accent)}
 .contact .info{padding:56px}
-.contact h2{color:var(--on-wine)}
-.contact h2 em{color:#f0c4c9}
+.contact h2{color:var(--on-accent)}
+.contact h2 em{color:var(--accent-soft)}
 .contact dl{display:grid;gap:20px;margin:6px 0 36px}
 .contact dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
 .contact dd{font-size:18px}
 .contact dd a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
-.contact .btn{background:var(--on-wine);color:var(--wine)}
+.contact .btn{background:var(--on-accent);color:var(--accent)}
 .contact .btn::before{background:#fff}
-.contact .btn:hover{color:var(--wine)}
+.contact .btn:hover{color:var(--accent)}
 .contact iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.6) contrast(1.05)}
 @media (max-width:860px){ .contact{grid-template-columns:minmax(0,1fr)} .contact .info{padding:34px 26px} }
 
 footer{padding:40px 0 110px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .sticky{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;display:none;transform:translateY(140%);transition:transform .6s var(--ease)}
 .sticky.show{transform:none}
-.sticky .btn{width:100%;justify-content:center;box-shadow:0 18px 40px -16px rgba(60,10,20,.6)}
+.sticky .btn{width:100%;justify-content:center;box-shadow:0 18px 40px -16px rgba(var(--shadow),.6)}
 @media (max-width:760px){ .sticky{display:block} }
 
 @media (prefers-reduced-motion:reduce){
@@ -190,32 +184,22 @@ footer{padding:40px 0 110px;color:var(--muted);font-size:13px;display:flex;justi
 </style>
 </head>
 <body>
-
 <header id="hdr"><div class="wrap">
   <a class="logo" href="#top">Nail <span>Tuning</span></a>
   <nav><a href="#about">Про нас</a><a href="#prices">Ціни</a><a href="#works">Роботи</a><a href="#reviews">Відгуки</a><a href="#contact">Контакти</a></nav>
   <a class="btn book" href="https://ig.me/m/nail_tuning_" target="_blank" rel="noopener">Записатися</a>
 </div></header>
-
 <main id="top">
   <div class="wrap hero">
     <div>
       <div class="eyebrow fade">Студія нігтьової естетики · Липки</div>
-      <h1 class="serif" style="margin-top:18px">
-        <span class="line"><span>Манікюр,</span></span>
-        <span class="line"><span>до якого</span></span>
-        <span class="line"><span><em>повертаються</em></span></span>
-        <span class="line"><span>роками</span></span>
-      </h1>
+      <h1 class="serif" style="margin-top:18px"><span class="line"><span>Манікюр,</span></span><span class="line"><span>до якого</span></span><span class="line"><span><em>повертаються</em></span></span><span class="line"><span>роками</span></span></h1>
       <p class="lead fade d1">Затишна студія в центрі Києва з 2018 року. Стерильність, досвід і делікатна робота — навіть із чутливою кутикулою.</p>
-      <div class="cta-row fade d2">
-        <a class="btn book" href="https://ig.me/m/nail_tuning_" target="_blank" rel="noopener">Записатися <span class="arr">→</span></a>
-        <a class="btn ghost" href="#prices">Дивитися ціни</a>
-      </div>
+      <div class="cta-row fade d2"><a class="btn" href="https://ig.me/m/nail_tuning_" target="_blank" rel="noopener">Записатися <span class="arr">→</span></a><a class="btn ghost" href="#prices">Дивитися ціни</a></div>
       <div class="proof fade d3"><span class="stars">★★★★★</span><span><b>4.9</b> · 188 відгуків у Google</span></div>
     </div>
     <div class="visual" aria-hidden="true">
-      <div class="ph a" data-par="-0.06"><img src="img/w8.jpg" alt=""></div>
+      <div class="ph a" data-par="-0.06"><img src="img/w8.jpg" alt="" style="object-position:50% 50%"></div>
       <div class="ph b" data-par="0.08"><img src="img/w3.jpg" alt="" style="object-position:50% 70%"></div>
       <div class="badge fade d3">
         <svg viewBox="0 0 120 120"><defs><path id="c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
@@ -224,78 +208,40 @@ footer{padding:40px 0 110px;color:var(--muted);font-size:13px;display:flex;justi
       </div>
     </div>
   </div>
-
-  <div class="marquee" aria-hidden="true"><div class="track">
-    <span>Манікюр</span><span>Педикюр</span><span>Гель-лак</span><span>Японський манікюр</span><span>Парафінотерапія</span><span>Дизайн</span><span>Котяче око</span>
-    <span>Манікюр</span><span>Педикюр</span><span>Гель-лак</span><span>Японський манікюр</span><span>Парафінотерапія</span><span>Дизайн</span><span>Котяче око</span>
-  </div></div>
-
+  <div class="marquee" aria-hidden="true"><div class="track"><span>Манікюр</span><span>Педикюр</span><span>Гель-лак</span><span>Японський манікюр</span><span>Парафінотерапія</span><span>Дизайн</span><span>Котяче око</span><span>Манікюр</span><span>Педикюр</span><span>Гель-лак</span><span>Японський манікюр</span><span>Парафінотерапія</span><span>Дизайн</span><span>Котяче око</span></div></div>
   <section id="about"><div class="wrap">
     <div class="about">
       <div class="reveal"><div class="eyebrow">Про студію</div><h2>Тиша, турбота<br>і <em>ідеальні</em> нігті</h2></div>
       <p class="reveal">Ми працюємо на Лютеранській з 2018 року. Наші клієнтки ходять до нас роками — і повертаються навіть після переїзду в інше місто. Бо тут не поспішають, стерилізують інструменти й завжди питають, чи вам комфортно.</p>
     </div>
-    <div class="nums">
-      <div class="reveal" style="--i:0"><b data-count="2018">2018</b><span>рік заснування</span></div>
-      <div class="reveal" style="--i:1"><b data-count="4.9" data-dec="1">4.9</b><span>рейтинг у Google</span></div>
-      <div class="reveal" style="--i:2"><b data-count="188">188</b><span>відгуків клієнток</span></div>
-      <div class="reveal" style="--i:3"><b data-count="6300" data-suf="+">6300+</b><span>підписників в Instagram</span></div>
-    </div>
+    <div class="nums"><div class="reveal" style="--i:0"><b data-count="2018">2018</b><span>рік заснування</span></div><div class="reveal" style="--i:1"><b data-count="4.9" data-dec=1>4.9</b><span>рейтинг у Google</span></div><div class="reveal" style="--i:2"><b data-count="188">188</b><span>відгуків клієнток</span></div><div class="reveal" style="--i:3"><b data-count="6300" data-suf=+>6300+</b><span>підписників в Instagram</span></div></div>
   </div></section>
-
   <section id="prices" style="background:var(--bg2)"><div class="wrap">
     <div class="reveal"><div class="eyebrow">Прайс</div><h2>Послуги <em>та ціни</em></h2></div>
     <div class="tabs reveal" role="tablist"><span class="pill"></span></div>
     <div class="plist" id="plist"></div>
     <p class="note">Ціни вказані «від» — точна вартість залежить від майстра (майстер / ТОП-майстер).</p>
   </div></section>
-
   <section id="works"><div class="wrap">
     <div class="reveal"><div class="eyebrow">Портфоліо</div><h2>Наші <em>роботи</em></h2></div>
-    <div class="gal" id="gal">
-      <figure class="tall" style="--i:0"><img src="img/w1.jpg" alt="Матовий бордовий манікюр" loading="lazy"></figure>
-      <figure style="--i:1"><img src="img/w3.jpg" alt="Ніжний нюдовий манікюр" loading="lazy"></figure>
-      <figure style="--i:2"><img src="img/w5.jpg" alt="Яскравий помаранчевий манікюр" loading="lazy" style="object-position:50% 70%"></figure>
-      <figure class="tall" style="--i:3"><img src="img/w2.jpg" alt="Манікюр з дизайном" loading="lazy"></figure>
-      <figure class="wide" style="--i:4"><img src="img/w7.jpg" alt="Французький манікюр з кольоровим кінчиком" loading="lazy"></figure>
-      <figure style="--i:5"><img src="img/w4.jpg" alt="Котяче око, чорний" loading="lazy" style="object-position:50% 20%"></figure>
-      <figure style="--i:6"><img src="img/w6.jpg" alt="Манікюр з дизайном" loading="lazy"></figure>
-      <figure class="wide" style="--i:7"><img src="img/w8.jpg" alt="Бордовий глянцевий манікюр" loading="lazy" style="object-position:50% 35%"></figure>
-    </div>
+    <div class="gal" id="gal"><figure class="tall" style="--i:0"><img src="img/w1.jpg" alt="Матовий бордовий манікюр" loading="lazy"></figure><figure class="" style="--i:1"><img src="img/w3.jpg" alt="Ніжний нюдовий манікюр" loading="lazy"></figure><figure class="" style="--i:2"><img src="img/w5.jpg" alt="Яскравий помаранчевий манікюр" loading="lazy" style="object-position:50% 70%"></figure><figure class="tall" style="--i:3"><img src="img/w2.jpg" alt="Манікюр з дизайном" loading="lazy"></figure><figure class="wide" style="--i:4"><img src="img/w7.jpg" alt="Французький манікюр з кольоровим кінчиком" loading="lazy"></figure><figure class="" style="--i:5"><img src="img/w4.jpg" alt="Котяче око, чорний" loading="lazy" style="object-position:50% 20%"></figure><figure class="" style="--i:6"><img src="img/w6.jpg" alt="Манікюр з дизайном" loading="lazy"></figure><figure class="wide" style="--i:7"><img src="img/w8.jpg" alt="Бордовий глянцевий манікюр" loading="lazy" style="object-position:50% 35%"></figure></div>
     <div style="margin-top:34px" class="reveal"><a class="btn ghost" href="https://instagram.com/nail_tuning_" target="_blank" rel="noopener">Більше робіт в Instagram <span class="arr">→</span></a></div>
   </div></section>
-
   <section style="padding-top:0"><div class="wrap">
     <div class="reveal"><div class="eyebrow">Чому ми</div><h2>Приходять раз —<br><em>залишаються</em> роками</h2></div>
-    <div class="why">
-      <div class="reveal" style="--i:0"><i>01</i><b>Стерильно</b><p>Інструменти проходять повний цикл обробки. У студії завжди чисто й затишно.</p></div>
-      <div class="reveal" style="--i:1"><i>02</i><b>Делікатно</b><p>Майстриня уточнює, чи вам комфортно — особливо, якщо кутикула чутлива.</p></div>
-      <div class="reveal" style="--i:2"><i>03</i><b>Досвід</b><p>Працюємо з 2018 року, у майстринь — постійні клієнтки по кілька років.</p></div>
-      <div class="reveal" style="--i:3"><i>04</i><b>У центрі</b><p>Липки, кілька хвилин від Хрещатика: зручно після роботи чи прогулянки.</p></div>
-    </div>
+    <div class="why"><div class="reveal" style="--i:0"><i>01</i><b>Стерильно</b><p>Інструменти проходять повний цикл обробки. У студії завжди чисто й затишно.</p></div><div class="reveal" style="--i:1"><i>02</i><b>Делікатно</b><p>Майстриня уточнює, чи вам комфортно — особливо, якщо кутикула чутлива.</p></div><div class="reveal" style="--i:2"><i>03</i><b>Досвід</b><p>Працюємо з 2018 року, у майстринь — постійні клієнтки по кілька років.</p></div><div class="reveal" style="--i:3"><i>04</i><b>У центрі</b><p>Липки, кілька хвилин від Хрещатика: зручно після роботи чи прогулянки.</p></div></div>
   </div></section>
-
   <section id="reviews" style="background:var(--bg2)"><div class="wrap">
-    <div class="reveal"><div class="eyebrow">Відгуки · <span class="stars">★★★★★</span> 4.9</div><h2>Що кажуть <em>клієнтки</em></h2></div>
-    <div class="rev reveal"><div class="slides" id="slides">
-      <div class="slide"><q>Близько 4,5 років ходжу сюди як додому. Навіть після переїзду в інше місто повертаюся до них.</q><span>Олександра · Google</span></div>
-      <div class="slide"><q>Майстриня дуже делікатно зробила манікюр і весь час уточнювала, чи не відчуваю я дискомфорту. Для мене це дуже важливо.</q><span>Olena · Google</span></div>
-      <div class="slide"><q>Вже майже 2 роки з Nail Tuning — любов з першого погляду. Завжди чистенько, гарненько, приємні дівчата.</q><span>Аліна · Google</span></div>
-    </div><div class="dots" id="dots"></div></div>
+    <div class="reveal"><div class="eyebrow">Відгуки · <span class="stars">★★★★★</span> 4.9</div><h2>Що кажуть <em>клієнти</em></h2></div>
+    <div class="rev reveal"><div class="slides" id="slides"><div class="slide"><q>Близько 4,5 років ходжу сюди як додому. Навіть після переїзду в інше місто повертаюся до них.</q><span>Олександра · Google</span></div><div class="slide"><q>Майстриня дуже делікатно зробила манікюр і весь час уточнювала, чи не відчуваю я дискомфорту. Для мене це дуже важливо.</q><span>Olena · Google</span></div><div class="slide"><q>Вже майже 2 роки з Nail Tuning — любов з першого погляду. Завжди чистенько, гарненько, приємні дівчата.</q><span>Аліна · Google</span></div></div><div class="dots" id="dots"></div></div>
     <p class="gnote">188 відгуків у Google Maps, середня оцінка 4.9.</p>
   </div></section>
-
   <section id="contact"><div class="wrap">
     <div class="contact reveal">
       <div class="info">
-        <div class="eyebrow" style="color:#f0c4c9">Контакти</div>
+        <div class="eyebrow" style="color:var(--accent-soft)">Контакти</div>
         <h2>Чекаємо <em>на вас</em></h2>
-        <dl>
-          <div><dt>Адреса</dt><dd>Київ, вул. Лютеранська, 8</dd></div>
-          <div><dt>Графік</dt><dd>Щодня до 20:00</dd></div>
-          <div><dt>Телефон</dt><dd><a href="tel:+380662003663">066 200 3663</a></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://instagram.com/nail_tuning_" target="_blank" rel="noopener">@nail_tuning_</a></dd></div>
-        </dl>
+        <dl><div><dt>Адреса</dt><dd>Київ, вул. Лютеранська, 8</dd></div><div><dt>Графік</dt><dd>Щодня до 20:00</dd></div><div><dt>Телефон</dt><dd><a href="tel:+380662003663">066 200 3663</a></dd></div><div><dt>Instagram</dt><dd><a href="https://instagram.com/nail_tuning_" target="_blank" rel="noopener">@nail_tuning_</a></dd></div></dl>
         <a class="btn" href="https://ig.me/m/nail_tuning_" target="_blank" rel="noopener">Записатися в Direct <span class="arr">→</span></a>
       </div>
       <iframe title="Nail Tuning на карті" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -303,22 +249,11 @@ footer{padding:40px 0 110px;color:var(--muted);font-size:13px;display:flex;justi
     </div>
   </div></section>
 </main>
-
 <div class="wrap"><footer><span>© <span id="yr"></span> Nail Tuning · Київ, Лютеранська, 8</span><span>Манікюр · Педикюр · з 2018 року</span></footer></div>
 <div class="sticky" id="sticky"><a class="btn" href="https://ig.me/m/nail_tuning_" target="_blank" rel="noopener">Записатися <span class="arr">→</span></a></div>
 <div class="lb" id="lb"><button aria-label="Закрити">×</button><img alt=""></div>
-
 <script>
-const PRICES = {
-  "Комплекс": [["Манікюр MAX","зняття + манікюр + гель-лак 1 тон","від 1000 ₴"],["Манікюр + гель-лак 1 тон","","від 850 ₴"],
-               ["Зняття + гігієнічний манікюр","","від 650 ₴"],["Педикюр MAX","зняття + педикюр + гель-лак","від 1100 ₴"],
-               ["Педикюр частковий з покриттям","тільки пальчики","від 1000 ₴"],["Педикюр з покриттям повний","без зняття","від 1000 ₴"]],
-  "Манікюр":  [["Гігієнічний жіночий","комбінований, апаратний","від 500 ₴"],["Гігієнічний чоловічий","комбінований, апаратний","від 650 ₴"],
-               ["Європейський / дитячий","необрізний","450 ₴"],["Японський манікюр","тільки втирка","250 ₴"]],
-  "Педикюр":  [["Гігієнічний жіночий","","від 800 ₴"],["Гігієнічний чоловічий","","від 800 ₴"],
-               ["Покриття гель-лак","пальчики ніг","400 ₴"],["Звичайний лак","пальчики ніг","200 ₴"],
-               ["Зняття гель-лаку + підпил","ніжки","від 300 ₴"]],
-};
+const PRICES = {"Комплекс": [["Манікюр MAX", "зняття + манікюр + гель-лак 1 тон", "від 1000 ₴"], ["Манікюр + гель-лак 1 тон", "", "від 850 ₴"], ["Зняття + гігієнічний манікюр", "", "від 650 ₴"], ["Педикюр MAX", "зняття + педикюр + гель-лак", "від 1100 ₴"], ["Педикюр частковий з покриттям", "тільки пальчики", "від 1000 ₴"], ["Педикюр з покриттям повний", "без зняття", "від 1000 ₴"]], "Манікюр": [["Гігієнічний жіночий", "комбінований, апаратний", "від 500 ₴"], ["Гігієнічний чоловічий", "комбінований, апаратний", "від 650 ₴"], ["Європейський / дитячий", "необрізний", "450 ₴"], ["Японський манікюр", "тільки втирка", "250 ₴"]], "Педикюр": [["Гігієнічний жіночий", "", "від 800 ₴"], ["Гігієнічний чоловічий", "", "від 800 ₴"], ["Покриття гель-лак", "пальчики ніг", "400 ₴"], ["Звичайний лак", "пальчики ніг", "200 ₴"], ["Зняття гель-лаку + підпил", "ніжки", "від 300 ₴"]]};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
