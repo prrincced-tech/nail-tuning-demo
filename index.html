@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Студия</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================================
+     ЧТОБЫ СДЕЛАТЬ САЙТ ПОД СТУДИЮ: поменяй только объект STUDIO внизу (в <script>).
+     Фото: положи файлы в папку img/ и впиши их имена в STUDIO.photos.
+     ===================================================================== */
+  :root{
+    --bg:#f7f3ee; --ink:#1d1a17; --muted:#6d655c; --line:#e3dad0;
+    --accent:#b0846a; --card:#fffdfa; --dark:#1d1a17;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#141210; --ink:#f2ece5; --muted:#a69c90; --line:#2c2722; --card:#1c1916; --dark:#0d0c0b; }
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  h1,h2{font-family:"Cormorant Garamond",serif;font-weight:600;letter-spacing:-.01em;line-height:1.05}
+  h1{font-size:clamp(44px,8vw,92px)}
+  h2{font-size:clamp(34px,5vw,56px);margin-bottom:28px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;background:var(--ink);color:var(--bg);
+       text-decoration:none;font-weight:700;transition:transform .2s, background .2s}
+  .btn:hover{transform:translateY(-2px);background:var(--accent)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;text-decoration:none}
+  nav a{margin-left:26px;text-decoration:none;color:var(--muted);font-size:14px}
+  nav a:hover{color:var(--ink)}
+  header .btn{padding:10px 20px;font-size:14px}
+  @media (max-width:760px){ nav{display:none} }
+
+  .hero{padding-top:72px;padding-bottom:56px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+  .hero p.lead{font-size:19px;color:var(--muted);margin:22px 0 32px;max-width:30em}
+  .hero .meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+  .hero .meta b{display:block;font-size:28px;font-family:"Cormorant Garamond",serif}
+  .hero .meta span{font-size:13px;color:var(--muted)}
+  .hero-photo{aspect-ratio:4/5;border-radius:220px 220px 24px 24px;overflow:hidden;background:var(--line)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:860px){ .hero{grid-template-columns:minmax(0,1fr);padding-top:40px} .hero-photo{max-width:420px;width:100%} }
+  .hero-photo,.gallery div{background:linear-gradient(135deg,var(--line),color-mix(in srgb,var(--accent) 25%,var(--line)))}
+
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px}
+  .cat h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .row{display:flex;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px dashed var(--line)}
+  .row .name{flex:1}
+  .row .name small{display:block;color:var(--muted);font-size:13px}
+  .row .price{font-weight:700;white-space:nowrap}
+
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .gallery div{aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--line)}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gallery div:hover img{transform:scale(1.05)}
+  @media (max-width:700px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .why div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+  .why b{font-family:"Cormorant Garamond",serif;font-size:24px;display:block;margin-bottom:6px}
+  .why p{color:var(--muted);font-size:15px}
+
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .review{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+  .review .stars{color:var(--accent);letter-spacing:2px}
+  .review p{margin:12px 0;font-size:15px}
+  .review span{color:var(--muted);font-size:13px}
+
+  .contact{background:var(--dark);color:#f2ece5;border-radius:28px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .contact h2{color:#f2ece5}
+  .contact .btn{background:#f2ece5;color:#1d1a17}
+  .contact .btn:hover{background:var(--accent);color:#fff}
+  .contact dl{display:grid;gap:18px}
+  .contact dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#a69c90}
+  .contact dd{font-size:18px}
+  @media (max-width:760px){ .contact{grid-template-columns:1fr;padding:32px} }
+
+  footer{padding:36px 0 100px;color:var(--muted);font-size:13px}
+  .sticky-cta{position:fixed;left:16px;right:16px;bottom:16px;display:none;justify-content:center;z-index:20}
+  @media (max-width:760px){ .sticky-cta{display:flex} .sticky-cta .btn{width:100%;justify-content:center} }
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s, transform .7s}
+  .reveal.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} }
+</style>
+</head>
+<body>
+<div style="background:#b0846a;color:#fff;text-align:center;font:600 13px/1.4 Manrope,sans-serif;padding:8px 16px">Демо-концепт сайту для Nail Tuning. Не офіційний сайт студії.</div>
+<header><div class="wrap">
+  <a class="logo" href="#" data-k="name"></a>
+  <nav><a href="#prices">Ціни</a><a href="#works">Роботи</a><a href="#reviews">Відгуки</a><a href="#contact">Контакти</a></nav>
+  <a class="btn book" href="#">Записатися</a>
+</div></header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow" data-k="tagline"></div>
+      <h1 data-k="headline"></h1>
+      <p class="lead" data-k="lead"></p>
+      <a class="btn book" href="#">Записатися →</a>
+      <a class="btn ghost" href="#prices" style="margin-left:8px">Ціни</a>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="hero-photo"><img id="heroImg" alt=""></div>
+  </div>
+
+  <section id="prices"><div class="wrap reveal">
+    <div class="eyebrow">Прайс</div><h2>Послуги та ціни</h2>
+    <div class="prices" id="priceList"></div>
+  </div></section>
+
+  <section id="works"><div class="wrap reveal">
+    <div class="eyebrow">Портфоліо</div><h2>Наші роботи</h2>
+    <div class="gallery" id="gallery"></div>
+  </div></section>
+
+  <section><div class="wrap reveal">
+    <div class="eyebrow">Чому ми</div><h2>Приходять раз — залишаються роками</h2>
+    <div class="why" id="why"></div>
+  </div></section>
+
+  <section id="reviews"><div class="wrap reveal">
+    <div class="eyebrow">Відгуки</div><h2>Що кажуть клієнтки</h2>
+    <div class="reviews" id="reviewList"></div>
+  </div></section>
+
+  <section id="contact"><div class="wrap reveal">
+    <div class="contact">
+      <div>
+        <h2>Чекаємо на вас</h2>
+        <p style="color:#a69c90;margin-bottom:28px">Напишіть нам або зателефонуйте: підберемо майстриню і зручний час.</p>
+        <a class="btn book" href="#">Записатися в Instagram</a>
+      </div>
+      <dl id="contacts"></dl>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+<div class="sticky-cta"><a class="btn book" href="#">Записатися</a></div>
+
+<script>
+/* ======================= ДАННЫЕ СТУДИИ: МЕНЯТЬ ТУТ ======================= */
+const STUDIO = {
+  name: "Nail Tuning",
+  tagline: "Студія нігтьової естетики · центр Києва",
+  headline: "Манікюр у центрі Києва, до якого повертаються роками",
+  lead: "Затишна студія на Липках з 2018 року. Стерильність, досвідчені майстрині й делікатна робота навіть із чутливою кутикулою.",
+  bookingUrl: "https://ig.me/m/nail_tuning_",
+  phone: "066 200 3663",
+  address: "Київ, вул. Лютеранська, 8",
+  hours: "Щодня до 20:00",
+  instagram: "nail_tuning_",
+  telegram: "",
+  meta: [["4.9", "188 відгуків у Google"], ["з 2018", "працюємо для вас"], ["6 300+", "підписників"]],
+  photos: { hero: "", works: [] },
+  prices: {
+    "Комплекс": [["Манікюр MAX", "зняття + манікюр + гель-лак 1 тон", "від 1000 ₴"],
+                 ["Манікюр + гель-лак 1 тон", "", "від 850 ₴"],
+                 ["Зняття + гігієнічний манікюр", "", "від 650 ₴"],
+                 ["Педикюр MAX", "зняття + педикюр + гель-лак", "від 1100 ₴"]],
+    "Манікюр": [["Гігієнічний жіночий", "комбінований, апаратний", "від 500 ₴"],
+                ["Гігієнічний чоловічий", "комбінований, апаратний", "від 650 ₴"],
+                ["Європейський / дитячий", "необрізний", "450 ₴"],
+                ["Японський манікюр", "", "250 ₴"]],
+    "Педикюр": [["Гігієнічний жіночий", "", "від 800 ₴"],
+                ["Гігієнічний чоловічий", "", "від 800 ₴"],
+                ["Педикюр з покриттям повний", "без зняття", "від 1000 ₴"],
+                ["Покриття гель-лак (пальчики ніг)", "", "400 ₴"]],
+  },
+  why: [["Стерильно", "Інструменти проходять повну обробку, у студії завжди чисто."],
+        ["Делікатно", "Майстриня уточнює, чи вам комфортно, особливо з чутливою кутикулою."],
+        ["Досвід", "Працюємо з 2018 року, у майстринь роками постійні клієнтки."],
+        ["У центрі", "Липки, поруч із Хрещатиком: зручно після роботи чи прогулянки."]],
+  reviews: [["Olena", "Задоволена візитом. Майстриня дуже делікатно зробила манікюр і уточнювала, чи не відчуваю я дискомфорту."],
+            ["Олександра", "Близько 4,5 років ходжу сюди як додому. Навіть після переїзду в інше місто повертаюся до них."],
+            ["Аліна", "Вже майже 2 роки з Nail Tuning — любов з першого погляду. Завжди чистенько й гарненько."]],
+};
+/* ======================================================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.title = STUDIO.name;
+document.querySelectorAll("[data-k]").forEach(el => el.textContent = STUDIO[el.dataset.k]);
+document.querySelectorAll(".book").forEach(a => { a.href = STUDIO.bookingUrl; a.target = "_blank"; a.rel = "noopener"; });
+$("#meta").innerHTML = STUDIO.meta.map(([b, s]) => `<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("");
+if (STUDIO.photos.hero) $("#heroImg").src = STUDIO.photos.hero;
+$("#priceList").innerHTML = Object.entries(STUDIO.prices).map(([cat, rows]) =>
+  `<div class="cat"><h3>${esc(cat)}</h3>${rows.map(([n, d, p]) =>
+    `<div class="row"><div class="name">${esc(n)}${d ? `<small>${esc(d)}</small>` : ""}</div><div class="price">${esc(p)}</div></div>`).join("")}</div>`).join("");
+const works = STUDIO.photos.works.length ? STUDIO.photos.works : Array(8).fill("");
+$("#gallery").innerHTML = works.map(src => `<div>${src ? `<img loading="lazy" src="${esc(src)}" alt="">` : ""}</div>`).join("");
+$("#why").innerHTML = STUDIO.why.map(([b, p]) => `<div><b>${esc(b)}</b><p>${esc(p)}</p></div>`).join("");
+$("#reviewList").innerHTML = STUDIO.reviews.map(([n, t]) =>
+  `<div class="review"><div class="stars">★★★★★</div><p>${esc(t)}</p><span>${esc(n)}</span></div>`).join("");
+const c = [["Адреса", STUDIO.address], ["Графік", STUDIO.hours], ["Телефон", `<a href="tel:${STUDIO.phone.replace(/[^\d+]/g, "")}">${esc(STUDIO.phone)}</a>`]];
+if (STUDIO.instagram) c.push(["Instagram", `<a href="https://instagram.com/${esc(STUDIO.instagram)}" target="_blank" rel="noopener">@${esc(STUDIO.instagram)}</a>`]);
+if (STUDIO.telegram) c.push(["Telegram", `<a href="https://t.me/${esc(STUDIO.telegram)}" target="_blank" rel="noopener">@${esc(STUDIO.telegram)}</a>`]);
+$("#contacts").innerHTML = c.map(([t, d]) => `<div><dt>${t}</dt><dd>${t === "Адреса" || t === "Графік" ? esc(d) : d}</dd></div>`).join("");
+$("#foot").textContent = `© ${new Date().getFullYear()} ${STUDIO.name} · ${STUDIO.address}`;
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("on")), {threshold: .12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
